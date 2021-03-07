@@ -6,9 +6,12 @@ Plug 'vim-airline/vim-airline'	       " status line
 Plug 'tpope/vim-surround'              " quick bracket changing
 Plug 'ctrlpvim/ctrlp.vim'              " fuzzy file search
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mkitt/tabline.vim'               " Tab indexes
+Plug 'mhinz/vim-startify'              " Starting screen
 call plug#end()
 
 "TODO install ack
+"TODO rework tab management
 
 syntax on                              " enables syntax
 set relativenumber       	           " lines are indexed relatively from current line
@@ -19,8 +22,8 @@ set smartindent                        " indents text
 let mapleader=" "                      " sets mapleader as 'space'
 
 "Gruvbox commands
-"autocmd vimenter * ++nested colorscheme gruvbox 
 autocmd vimenter * colorscheme gruvbox                                                                                        
+"autocmd vimenter * ++nested colorscheme gruvbox 
 
 "Tab stuff                                                                                                                    
 set ts=4                                                                                                                      
@@ -39,10 +42,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Make adjusing split sizes a bit more friendly
-nnoremap <silent> <S-Left> :vertical resize +3<CR>
-nnoremap <silent> <S-Right> :vertical resize -3<CR>
-nnoremap <silent> <S-Up> :resize +3<CR>
-nnoremap <silent> <S-Down> :resize -3<CR>
+nnoremap <silent> <S-h> :vertical resize +3<CR>
+nnoremap <silent> <S-l> :vertical resize -3<CR>
+nnoremap <silent> <S-k> :resize +3<CR>
+nnoremap <silent> <S-j> :resize -3<CR>
 
 "Scrolling speed
 "set ttyfast
@@ -58,9 +61,13 @@ set sidescroll=1
 noremap <leader>w :tab ball<CR>                                                                                               
 noremap <C-o> :NERDTreeFind<CR>                                                                                               
 noremap <leader>o :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
 
 "Clears / search                                                                                                              
 nnoremap <esc> :noh<return><esc>
 
 "Lets ctrlp only search current directory                                                                                     
 let g:ctrlp_working_path_mode = 'a'
+
+"Opens terminal
+noremap <leader>t :term<CR>
