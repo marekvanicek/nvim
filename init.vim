@@ -1,29 +1,66 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'morhetz/gruvbox'		           " dark theme
-Plug 'preservim/nerdtree'	           " file manager
-Plug 'vim-airline/vim-airline'	       " status line
-Plug 'tpope/vim-surround'              " quick bracket changing
-Plug 'ctrlpvim/ctrlp.vim'              " fuzzy file search
+                  "THEMES"
+Plug 'morhetz/gruvbox'		                          " dark theme
+Plug 'sonph/onehalf', { 'rtp': 'vim' }                " onehalf theme
+Plug 'jacoborus/tender.vim'                           " tender theme
+Plug 'drewtempelmeyer/palenight.vim'                  " palenight theme
+Plug 'rakr/vim-one'                                   " vimone theme
+Plug 'dracula/vim', { 'as': 'dracula' }               " dracula theme
+Plug 'NLKNguyen/papercolor-theme'                     " light theme 
+
+                  "NOT THEMES"
+Plug 'preservim/nerdtree'	                          " file manager
+Plug 'vim-airline/vim-airline'	                      " status line
+Plug 'tpope/vim-surround'                             " quick bracket changing
+Plug 'ctrlpvim/ctrlp.vim'                             " fuzzy file search
+Plug 'mkitt/tabline.vim'                              " tab indexes
+Plug 'mhinz/vim-startify'                             " starting screen
+Plug 'vim-scripts/DoxygenToolkit.vim'                 " doxygen comments
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mkitt/tabline.vim'               " Tab indexes
-Plug 'mhinz/vim-startify'              " Starting screen
+Plug 'pseewald/vim-anyfold'                           " Folding plugin
+
 call plug#end()
 
 "TODO install ack
 "TODO rework tab management
 
-syntax on                              " enables syntax
-set relativenumber       	           " lines are indexed relatively from current line
-set nu                                 " shows index of current line
-set hlsearch                           " highlights searched
-set autoindent                         " indents text
-set smartindent                        " indents text
-let mapleader=" "                      " sets mapleader as 'space'
+syntax on                                             " enables syntax
+syntax enable
+set relativenumber       	                          " lines are indexed relatively from current line
+set nu                                                " shows index of current line
+set hlsearch                                          " highlights searched
+set autoindent                                        " indents text
+set smartindent                                       " indents text
+let mapleader=" "                                     " sets mapleader as 'space'
 
 "Gruvbox commands
-autocmd vimenter * colorscheme gruvbox                                                                                        
 "autocmd vimenter * ++nested colorscheme gruvbox 
+"autocmd vimenter * colorscheme gruvbox                                                                                        
+
+"Onehalf commands
+"colorscheme onehalflight
+"let g:airline_theme='onehalflight'
+
+"Tender theme
+colorscheme tender
+
+"Palenight theme
+"set background=dark
+"colorscheme palenight
+"let g:airline_theme = "palenight"
+
+"Atom one theme
+"colorscheme one
+"set background=dark
+"let g:airline_theme='one'
+
+"Dracula theme
+"colorscheme dracula
+
+"set background=dark
+"colorscheme PaperColor
+
 
 "Tab stuff                                                                                                                    
 set ts=4                                                                                                                      
@@ -59,7 +96,7 @@ set sidescroll=1
                                                                                                                               
 "Nerd tree setup                                                                                                              
 noremap <leader>w :tab ball<CR>                                                                                               
-noremap <C-o> :NERDTreeFind<CR>                                                                                               
+"noremap <C-o> :NERDTreeFind<CR>                                                                                               
 noremap <leader>o :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 
@@ -71,3 +108,13 @@ let g:ctrlp_working_path_mode = 'a'
 
 "Opens terminal
 noremap <leader>t :term<CR>
+
+"Doxygen comment
+noremap <leader>d :Dox<CR>
+
+"AutoFold commands
+filetype plugin indent on
+autocmd Filetype * AnyFoldActivate
+set foldlevel=0  " close all folds
+" or
+"set foldlevel=99 " Open all folds
